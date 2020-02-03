@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+<Container version="3">
+  <Name>plex-hwdecode</Name>
+  <Repository>TODO</Repository>
+  <Registry>TODO</Registry>
+  <Network>host</Network>
+  <MyIP/>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Support></Support>
+  <Project>https://www.plex.tv/</Project>
+  <Overview>Plex Server</Overview>
+  <Category>MediaServer:Video MediaServer:Music MediaServer:Photos</Category>
+  <WebUI>http://[IP]:[PORT:32400]/web</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/buggex/unraid_dockers/master/unraid_dockers/plex_hwdecode.xml</TemplateURL>
+  <Icon></Icon>
+  <ExtraParams>--runtime=nvidia</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DonateText></DonateText>
+  <DonateLink></DonateLink>
+  <Description>Plex organizes video, music and photos from personal media libraries and streams them to smart TVs, streaming boxes and mobile devices.</Description>
+  <Networking>
+    <Mode>host</Mode>
+    <Publish>
+      <Port>
+        <HostPort>32400</HostPort>
+        <ContainerPort>32400</ContainerPort>
+        <Protocol>tcp</Protocol>
+      </Port>
+      <Port>
+        <HostPort>3005</HostPort>
+        <ContainerPort>3005</ContainerPort>
+        <Protocol>tcp</Protocol>
+      </Port>
+      <Port>
+        <HostPort>8324</HostPort>
+        <ContainerPort>8324</ContainerPort>
+        <Protocol>tcp</Protocol>
+      </Port>
+      <Port>
+        <HostPort>32469</HostPort>
+        <ContainerPort>32469</ContainerPort>
+        <Protocol>tcp</Protocol>
+      </Port>
+      <Port>
+        <HostPort>1900</HostPort>
+        <ContainerPort>1900</ContainerPort>
+        <Protocol>udp</Protocol>
+      </Port>
+      <Port>
+        <HostPort>32410</HostPort>
+        <ContainerPort>32410</ContainerPort>
+        <Protocol>udp</Protocol>
+      </Port>
+      <Port>
+        <HostPort>32412</HostPort>
+        <ContainerPort>32412</ContainerPort>
+        <Protocol>udp</Protocol>
+      </Port>
+      <Port>
+        <HostPort>32413</HostPort>
+        <ContainerPort>32413</ContainerPort>
+        <Protocol>udp</Protocol>
+      </Port>
+      <Port>
+        <HostPort>32414</HostPort>
+        <ContainerPort>32414</ContainerPort>
+        <Protocol>udp</Protocol>
+      </Port>
+    </Publish>
+  </Networking>
+  <Data>
+    <Volume>
+      <HostDir/>
+      <ContainerDir>/media</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+    <Volume>
+      <HostDir/>
+      <ContainerDir>/transcode</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+    <Volume>
+      <HostDir></HostDir>
+      <ContainerDir>/config</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+  </Data>
+  <Environment>
+    <Variable>
+      <Value>docker</Value>
+      <Name>VERSION</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value/>
+      <Name>NVIDIA_VISIBLE_DEVICES</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value/>
+      <Name>NVIDIA_DRIVER_CAPABILITIES</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>99</Value>
+      <Name>PUID</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>100</Value>
+      <Name>PGID</Name>
+      <Mode/>
+    </Variable>
+  </Environment>
+  <Labels/>
+  <Config Name="VERSION" Target="VERSION" Default="" Mode="" Description="VERSION" Type="Variable" Display="always" Required="false" Mask="false">docker</Config>
+  <Config Name="Media" Target="/media" Default="" Mode="rw" Description="Media - /media" Type="Path" Display="always" Required="false" Mask="false"/>
+  <Config Name="Transcode" Target="/transcode" Default="" Mode="rw" Description="Path for transcoding folder (Optional)" Type="Path" Display="always" Required="false" Mask="false"/>
+  <Config Name="Nvidia Visible Devices" Target="NVIDIA_VISIBLE_DEVICES" Default="all" Mode="" Description="Nvidia Visible Devices (Optional - Requires Nvidia GPU and Unraid Nvidia build)" Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="Nvidia Driver Capabilities" Target="NVIDIA_DRIVER_CAPABILITIES" Default="all" Mode="" Description="Nvidia Driver Capabilities (Optional - Requires Nvidia GPU and Unraid Nvidia build)" Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="Appdata" Target="/config" Default="" Mode="rw" Description="Appdata" Type="Path" Display="advanced" Required="false" Mask="false"></Config>
+  <Config Name="Webui" Target="32400" Default="32400" Mode="tcp" Description="For access to the Plex Media Server Webui (No effect in host mode - reference only)" Type="Port" Display="advanced" Required="false" Mask="false">32400</Config>
+  <Config Name="Plex Companion" Target="3005" Default="3005" Mode="tcp" Description="For controlling Plex Home Theater via Plex Companion (No effect in host mode - reference only)" Type="Port" Display="advanced" Required="false" Mask="false">3005</Config>
+  <Config Name="Roku via Plex Companion" Target="8324" Default="8324" Mode="tcp" Description="For controlling Plex for Roku via Plex Companion (No effect in host mode - reference only)" Type="Port" Display="advanced" Required="false" Mask="false">8324</Config>
+  <Config Name="Plex DLNA Server" Target="32469" Default="32469" Mode="tcp" Description="For access to the Plex DLNA Server (No effect in host mode - reference only)" Type="Port" Display="advanced" Required="false" Mask="false">32469</Config>
+  <Config Name="Plex DLNA Server" Target="1900" Default="1900" Mode="udp" Description="For access to the Plex DLNA Server (No effect in host mode - reference only)" Type="Port" Display="advanced" Required="false" Mask="false">1900</Config>
+  <Config Name="GDM network discovery" Target="32410" Default="32410" Mode="udp" Description="For current GDM network discovery (No effect in host mode - reference only)" Type="Port" Display="advanced" Required="false" Mask="false">32410</Config>
+  <Config Name="GDM network discovery" Target="32412" Default="32412" Mode="udp" Description="For current GDM network discovery (No effect in host mode - reference only)" Type="Port" Display="advanced" Required="false" Mask="false">32412</Config>
+  <Config Name="GDM network discovery" Target="32413" Default="32413" Mode="udp" Description="For current GDM network discovery (No effect in host mode - reference only)" Type="Port" Display="advanced" Required="false" Mask="false">32413</Config>
+  <Config Name="GDM network discovery" Target="32414" Default="32414" Mode="udp" Description="For current GDM network discovery (No effect in host mode - reference only)" Type="Port" Display="advanced" Required="false" Mask="false">32414</Config>
+  <Config Name="PUID" Target="PUID" Default="" Mode="" Description="PUID" Type="Variable" Display="advanced" Required="false" Mask="false">99</Config>
+  <Config Name="PGID" Target="PGID" Default="" Mode="" Description="PGID" Type="Variable" Display="advanced" Required="false" Mask="false">100</Config>
+</Container>
