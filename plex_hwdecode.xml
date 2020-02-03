@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<Container version="4">
-  <Name>plex-hwdecode</Name>
+<Container version="5">
+  <Name>plexhwdecode</Name>
   <Repository>buggex/plexhwdecode</Repository>
   <Registry>https://hub.docker.com/r/buggex/plex_hwdecode/</Registry>
   <Network>host</Network>
